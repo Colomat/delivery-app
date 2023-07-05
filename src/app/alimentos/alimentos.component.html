@@ -1,0 +1,77 @@
+<div class="container">
+  <h1>Lista de Alimentos</h1>
+  <hr>
+  <div class="form-row">
+    <div class="form-group col-md-2 form1">
+      <label for="id" class="sr-only">ID</label>
+      <input type="text" name="id" id="id" placeholder="ID" class="form-control" [(ngModel)] = "idInput">
+    </div>
+    
+    <div class="form-group col-md-2 form2">
+      <label for="nombre" class="sr-only">Nombre</label>
+      <input type="text" name="nombre" id="nombre" placeholder="Nombre" class="form-control" [(ngModel)] = "nombreInput">
+    </div>
+
+    <div class="form-group col-md-2 form2">
+      <label for="tipo" class="sr-only">Tipo</label>
+      <input type="text" name="tipo" id="tipo" placeholder="Tipo" class="form-control" [(ngModel)] = "tipoInput">
+    </div>
+
+    
+
+    <div class="form-group col-md-2 form3">
+      <label for="precio" class="sr-only">Precio</label>
+      <input type="text" name="precio" id="precio" placeholder="Precio" class="form-control" [(ngModel)] = "precioInput">
+    </div>
+
+    
+
+  </div>
+  <br>
+  
+  <div class="col">
+    <button type="submit" class="btn btn-primary" (click)="agregarProducto()">Agregar producto</button>
+  </div>
+  <br>
+
+  <div class="form-group col-md-2 form2">
+    <label>Tipo de comida</label>
+    <select [(ngModel)]="tipoInput">
+      <option value="">Todos</option>
+      <option value="Vegano">Vegano</option>
+      <option value="Vegetariano">Vegetariano</option>
+      <option value="Celiaco">Celiaco</option>
+      <option value="Carne">Carne</option>
+    </select>
+  </div>
+
+  <div class="row">
+    <div class="col">
+      <table class="table table-striped">
+        <thead>
+          <tr>
+            <th>ID</th>
+            <th>NOMBRE</th>
+            <th>TIPO</th>
+            <th>PRECIO</th>
+          </tr>
+        </thead>
+        <tbody *ngFor="let producto of filtrarComidas()">
+          <tr>
+            <td>{{producto.id}}</td>
+            <td>{{producto.nombre}}</td>
+            <td>{{producto.tipo}}</td>
+            <td>{{producto.precio}}</td>
+            <input type="number" [(ngModel)]="nuevoPrecio">
+            <button class="btn btn-secondary" (click)="modificarPrecio(producto, nuevoPrecio)">Modificar Precio</button>
+            <button type="submit" class="btn btn-secondary" (click)="eliminarComida(producto)">Eliminar</button>
+            
+          </tr>
+        </tbody>
+      </table> 
+    </div>
+  </div>
+
+</div>
+
+
